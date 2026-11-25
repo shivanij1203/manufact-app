@@ -77,7 +77,7 @@ export default function CandidatePanel() {
               {!state.selected && (
                 <ul className="blurbs">
                   {ready.projects.map((p) => (
-                    <li key={p.id}><b>{p.name}</b> {p.blurb}</li>
+                    <li key={p.id}><b>{p.name}</b> <span>{p.blurb}</span></li>
                   ))}
                 </ul>
               )}
@@ -86,8 +86,16 @@ export default function CandidatePanel() {
                 <p className="error" role="alert">Could not load {nameOf(ready.projects, state.selected)}: {project.error.message}</p>
               )}
               {shown && !project.isPending && (
-                <article className="card">
-                  <h2 className="card-title">{shown.name}</h2>
+                <article className="card" key={shown.id}>
+                  <header className="card-head">
+                    <h2 className="card-title">{shown.name}</h2>
+                    {shown.link && (
+                      <a className="card-link" href={shown.link} target="_blank" rel="noreferrer">
+                        Source on GitHub
+                        <svg aria-hidden="true" viewBox="0 0 12 12" width="12" height="12"><path d="M4 2.5h5.5V8M9.5 2.5 2.5 9.5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      </a>
+                    )}
+                  </header>
                   <p className="summary">{shown.summary}</p>
                   {shown.highlights.length > 0 && (
                     <ul className="highlights">
@@ -95,7 +103,6 @@ export default function CandidatePanel() {
                     </ul>
                   )}
                   {shown.status && <p className="status">{shown.status}</p>}
-                  {shown.link && <p className="link"><a href={shown.link} target="_blank" rel="noreferrer">Source on GitHub</a></p>}
                 </article>
               )}
             </div>
