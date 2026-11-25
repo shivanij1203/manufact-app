@@ -1,3 +1,9 @@
+/* Inter (SIL Open Font License 1.1, fonts/OFL.txt), latin subset, bundled with the View
+   so the weight hierarchy does not depend on the host's system fonts. */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("./fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("./fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("./fonts/inter-latin-600-normal.woff2") format("woff2"); }
+
 /* Candidate panel. Two palettes chosen from the host theme (data-theme on the panel), one accent.
    Spacing follows a 4px scale; sizes step down from the name to captions. */
 .panel {
@@ -16,7 +22,7 @@
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px;
 
   box-sizing: border-box;
-  font: 400 14px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font: 400 14px/1.5 "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: var(--text);
   background: var(--bg);
