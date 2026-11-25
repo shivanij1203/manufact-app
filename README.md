@@ -32,3 +32,16 @@ To learn more about mcp-use and MCP:
 ```bash
 npm run deploy
 ```
+
+## Demo recording
+
+`media/candidate-panel.gif` is a recording of the panel in the mcp-use Inspector: `show-candidate` runs, then the NeoGuard and RAISE chips each load their detail in place. To record it again with headless Chromium, while `npm run dev` serves the app on port 3000:
+
+```bash
+docker build -t manufact-recorder:1 -f scripts/recorder.Dockerfile scripts
+# run inside a container on the dev server's network, so localhost:3000 reaches it
+node scripts/record-demo.mjs http://localhost:3000/mcp/inspector out
+bash scripts/make-gif.sh out media/candidate-panel.gif
+```
+
+`record-demo.mjs` switches the View to fullscreen so it stays top-aligned while it grows. `make-gif.sh` crops to the panel and anchors the trim on the frame where the NeoGuard chip turns selected.
