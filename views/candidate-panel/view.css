@@ -1,0 +1,72 @@
+/* Two palettes, chosen from the host theme (data-theme on the panel). One accent. */
+.panel {
+  --bg: #0b0b0e;
+  --surface: #16161a;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #6b97ff;
+  --on-accent: #0b0b0e;
+  --warn: #ffb4a8;
+  font: 400 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.panel[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f4f4f5;
+  --line: rgba(0, 0, 0, 0.1);
+  --text: #18181b;
+  --muted: #52525b;
+  --accent: #1447e6;
+  --on-accent: #ffffff;
+  --warn: #b42318;
+}
+
+.name { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.pitch { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font: inherit;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.chip:hover { border-color: var(--accent); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.detail { min-height: 96px; }
+.blurbs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.blurbs b { margin-right: 6px; }
+.blurbs li { color: var(--muted); }
+.blurbs li b { color: var(--text); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.card-title { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+.summary { margin: 0; }
+.highlights { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; list-style: disc; }
+.status { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.link { margin: 10px 0 0; }
+.link a { color: var(--accent); }
+
+.muted { color: var(--muted); margin: 0; }
+.error { color: var(--warn); margin: 0; }
+
+.skeleton { display: grid; gap: 10px; }
+.bar { display: block; height: 12px; border-radius: 6px; background: var(--surface); }
+.w40 { width: 40%; } .w60 { width: 60%; } .w80 { width: 80%; }
+
+@media (prefers-reduced-motion: reduce) { .chip { transition: none; } }
